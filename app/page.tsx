@@ -178,7 +178,9 @@ export default function Home() {
         <div className="text-3xl mb-4">🦞</div>
         <p className="text-neutral-500 text-xs md:text-sm">
           © 2026 Sanwan.ai. All rights reserved.
-          <br className="mt-2 text-neutral-700">Digital Worker for Everyone</p>
+          <br className="mt-2 hidden md:block" />
+          <span className="block mt-2 text-neutral-700">Digital Worker for Everyone</span>
+        </p>
       </footer>
     </main>
   );
