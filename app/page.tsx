@@ -2,8 +2,9 @@ import Link from "next/link";
 import { 
   Brain, ShoppingCart, Palette, Clapperboard, 
   Music, Smartphone, Rocket, Globe, Sparkles, 
-  Layers, Clock, Zap
+  Layers, Clock
 } from "lucide-react";
+import React from 'react';
 
 export default function Home() {
   return (
@@ -222,7 +223,16 @@ function Statbox({ number, label }: { number: string, label: string }) {
   );
 }
 
-function FeatureCard({ icon, title, desc, color, bg, border }: any) {
+interface FeatureCardProps {
+  icon: React.ReactNode;
+  title: string;
+  desc: string;
+  color?: string;
+  bg?: string;
+  border?: string;
+}
+
+function FeatureCard({ icon, title, desc, color, bg, border }: FeatureCardProps) {
   return (
     <div className={`p-8 rounded-3xl bg-[#0A0A0A] border border-white/5 transition-all duration-300 group hover:-translate-y-1 hover:shadow-2xl ${border} relative overflow-hidden`}>
       <div className={`absolute inset-0 opacity-0 transition-opacity duration-500 ${bg}`} />
