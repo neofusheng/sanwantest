@@ -1,6 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-background: #020204;
+  --color-foreground: #ffffff;
+}
 
 :root {
   --foreground-rgb: 255, 255, 255;
@@ -17,21 +20,30 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: #020204;
+  color: var(--color-foreground);
+  background: var(--color-background);
   overflow-x: hidden;
+  font-family: var(--font-sans), system-ui, sans-serif;
 }
 
-/* Grid Background */
-.bg-grid {
+/* Custom Utilities for Grid */
+@utility bg-grid {
   background-size: 40px 40px;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
 }
 
-.animate-pulse-slow {
+@utility animate-pulse-slow {
   animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@utility animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@utility animate-gradient {
+  animation: gradient 8s linear infinite;
 }
 
 @keyframes pulse {
@@ -39,8 +51,19 @@ body {
   50% { opacity: 0.6; }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
